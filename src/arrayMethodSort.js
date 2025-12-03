@@ -11,8 +11,14 @@ function applyCustomSort() {
     while (!done) {
       done = true;
 
+      let order;
+
       for (let i = 1; i < this.length; i++) {
-        const order = compare(String(this[i - 1]), String(this[i]));
+        if (!compareFunction) {
+          order = compare(String(this[i - 1]), String(this[i]));
+        } else {
+          order = compare(this[i - 1], this[i]);
+        }
 
         if (order > 0) {
           done = false;
